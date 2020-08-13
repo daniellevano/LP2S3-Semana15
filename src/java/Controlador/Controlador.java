@@ -75,6 +75,28 @@ public class Controlador extends HttpServlet {
             estudiante.setEstado(s_estado);
             estudianteDAO.agregarestudiante(estudiante);
             acceso = listarestudiante;
+        }else if (s_accion.equalsIgnoreCase("editarestudiante01")) {
+            request.setAttribute("f_idestudiante", request.getParameter("f_idestudiante"));
+            acceso = editarestudiante;
+        }else if (s_accion.equalsIgnoreCase("editarestudiante02")) {
+            int s_idestudiante = Integer.valueOf(request.getParameter("f_idestudiante"));
+            String s_nombre = request.getParameter("f_nombre");
+            String s_apellidos = request.getParameter("f_apellidos");
+            String s_dni = request.getParameter("f_dni");
+            String s_codigo = request.getParameter("f_codigo");
+            String s_estado = request.getParameter("f_estado");
+            estudiante.setIdestudiante(s_idestudiante);
+            estudiante.setNombre(s_nombre);
+            estudiante.setApellidos(s_apellidos);
+            estudiante.setDni(s_dni);
+            estudiante.setCodigo(s_codigo);
+            estudiante.setEstado(s_estado);
+            estudianteDAO.editarestudiante(estudiante);
+            acceso = listarestudiante;
+        }else if (s_accion.equalsIgnoreCase("eliminarestudiante")) {
+            int s_idestudiante = Integer.valueOf(request.getParameter("f_idestudiante"));
+            estudianteDAO.eliminarestudiante(s_idestudiante);
+            acceso = listarestudiante;
         }
         RequestDispatcher vista = request.getRequestDispatcher(acceso);
         vista.forward(request, response);

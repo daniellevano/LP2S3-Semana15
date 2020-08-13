@@ -43,7 +43,10 @@
                         <td><% out.print(estudiante.getDni()); %></td>
                         <td><% out.print(estudiante.getCodigo()); %></td>
                         <td><% out.print(estudiante.getEstado()); %></td>                        
-                        <td>Eliminar/Editar</td>
+                        <td>
+                            <a href="Controlador?f_accion=editarestudiante01&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">Editar</a>
+                            <a href="Controlador?f_accion=eliminarestudiante&f_idestudiante=<% out.print(estudiante.getIdestudiante()); %>">Eliminar</a>
+                        </td>
                     </tr>
                     <% 
                         }
